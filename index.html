@@ -920,6 +920,53 @@
       font-weight: 700;
     }
 
+    /* ── Winning banner ── */
+    .winning-banner {
+      display: none;
+      background: #15803d;
+      border-radius: 16px 16px 0 0;
+      padding: 8px 24px;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .winning-banner strong { font-weight: 700; }
+
+    .auction-panel.winning {
+      border-color: #15803d;
+      border-radius: 0 0 16px 16px;
+    }
+
+    .place-bid-wrap.winning { background: #f0fdf4; }
+
+    /* Auto bid balance row */
+    .auto-bid-balance {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      gap: 0;
+      flex-direction: column;
+    }
+
+    .auto-bid-balance.show { display: flex; }
+
+    .ab-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .ab-label { color: #64748b; font-weight: 400; }
+    .ab-value { color: #04141d; font-weight: 600; }
+    .ab-remaining .ab-value { color: #15803d; }
+
     /* ── Auction Sidebar ── */
     .auction-sidebar {
       width: 450px;
@@ -1805,7 +1852,10 @@
 
     <!-- ── Auction Sidebar (sticky right column) ── -->
     <aside class="auction-sidebar" id="auction-sidebar">
-      <div class="auction-panel">
+      <div id="winning-banner" class="winning-banner">
+        <strong id="winning-status">You are winning!</strong> <span id="winning-auto-text"></span>
+      </div>
+      <div class="auction-panel" id="auction-panel">
 
         <!-- Header -->
         <div class="auction-panel-header">
@@ -1818,7 +1868,7 @@
           <div class="bid-info-box">
             <div class="bid-info-top">
               <div class="bid-info-cell">
-                <span class="bid-current-amount">€12,000</span>
+                <span class="bid-current-amount" id="bid-current-amount">€12,000</span>
                 <span class="bid-cell-label">Current bid</span>
               </div>
               <div class="bid-info-cell">
@@ -1858,9 +1908,16 @@
           </div>
         </div>
 
+        <!-- Auto bid balance (shown after bid placed with auto bid ON) -->
+        <div class="auto-bid-balance" id="auto-bid-balance">
+          <div class="ab-row"><span class="ab-label">Your auto bid limit</span><span class="ab-value" id="ab-limit-val">—</span></div>
+          <div class="ab-row"><span class="ab-label">Current bid</span><span class="ab-value" id="ab-current-val">—</span></div>
+          <div class="ab-row ab-remaining"><span class="ab-label">Auto bid remaining</span><span class="ab-value" id="ab-remaining-val">—</span></div>
+        </div>
+
         <!-- Place Bid -->
-        <div class="place-bid-wrap">
-          <button class="btn-place-bid" id="btn-place-bid">Place bid</button>
+        <div class="place-bid-wrap" id="place-bid-wrap">
+          <button class="btn-place-bid" id="btn-place-bid" onclick="placeBid()">Place bid</button>
           <div class="going-fast">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></svg>
             <span>Going fast! <strong>3 bids in last 5 mins</strong></span>
@@ -1870,7 +1927,7 @@
         <!-- Footer -->
         <div class="auction-footer">
           <button class="auction-footer-btn">Buyer fees</button>
-          <button class="auction-footer-btn">8 Bids</button>
+          <button class="auction-footer-btn" id="bid-count-btn">8 Bids</button>
         </div>
 
       </div>
@@ -1994,6 +2051,7 @@
 
     // ── Auto bid toggle ──
     var autoBidOn = false;
+    var autoBidLimit = 0;
     function toggleSwitch() {
       autoBidOn = !autoBidOn;
       document.getElementById('auto-bid-switch').classList.toggle('on', autoBidOn);
@@ -2009,6 +2067,42 @@
         bidBtn.textContent = 'Place bid';
         bidBtn.style.background = '';
         bidBtn.style.color = '';
+      }
+    }
+
+    // ── Place bid / Set auto bid ──
+    var bidCount = 8;
+    function placeBid() {
+      var placedAmount = bidAmount;
+      if (autoBidOn) { autoBidLimit = bidAmount; }
+
+      // Update current bid display
+      document.getElementById('bid-current-amount').textContent = '€' + placedAmount.toLocaleString('en-IE');
+
+      // Advance stepper to next increment
+      bidAmount = placedAmount + 100;
+      document.getElementById('stepper-value').value = '€' + bidAmount.toLocaleString('en-IE');
+
+      // Increment bid count
+      bidCount++;
+      document.getElementById('bid-count-btn').textContent = bidCount + ' Bids';
+
+      // Show winning banner
+      var banner = document.getElementById('winning-banner');
+      banner.style.display = 'block';
+      document.getElementById('winning-auto-text').textContent = autoBidOn ? '• Auto bid applied' : '';
+
+      // Green border on panel
+      document.getElementById('auction-panel').classList.add('winning');
+      document.getElementById('place-bid-wrap').classList.add('winning');
+
+      // Auto bid balance section
+      if (autoBidOn) {
+        var remaining = autoBidLimit - placedAmount;
+        document.getElementById('ab-limit-val').textContent = '€' + autoBidLimit.toLocaleString('en-IE');
+        document.getElementById('ab-current-val').textContent = '€' + placedAmount.toLocaleString('en-IE');
+        document.getElementById('ab-remaining-val').textContent = '€' + Math.max(0, remaining).toLocaleString('en-IE');
+        document.getElementById('auto-bid-balance').classList.add('show');
       }
     }
 
