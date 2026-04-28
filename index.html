@@ -2173,13 +2173,21 @@
       const lbCounter    = document.getElementById('lb-counter');
       const lbThumbsWrap = document.getElementById('lb-thumbs');
 
+      var _lbPending = -1, _lbDownX = 0, _lbDownY = 0;
+      document.addEventListener('mouseup', function (e) {
+        if (_lbPending < 0) return;
+        var idx = _lbPending;
+        _lbPending = -1;
+        if (Math.abs(e.clientX - _lbDownX) < 8 && Math.abs(e.clientY - _lbDownY) < 8) {
+          openLightbox(idx);
+        }
+      });
+
       function addGalleryClick(el, index) {
-        var downX, downY;
-        el.addEventListener('mousedown', function (e) { downX = e.clientX; downY = e.clientY; });
-        el.addEventListener('mouseup', function (e) {
-          if (Math.abs(e.clientX - downX) < 8 && Math.abs(e.clientY - downY) < 8) {
-            openLightbox(index);
-          }
+        el.addEventListener('mousedown', function (e) {
+          _lbPending = index;
+          _lbDownX = e.clientX;
+          _lbDownY = e.clientY;
         });
       }
 
