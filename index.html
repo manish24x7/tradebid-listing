@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skoda KAMIQ 1.0 TSI Bns Edition — TradeBid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #04141d;
+      min-height: 100vh;
+      padding-top: 59px;
+    }
+
+    /* ── Site Header ── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      transform: translateY(0);
+      transition: transform 0.25s ease;
+    }
+
+    .site-header.hidden {
+      transform: translateY(-100%);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 16px 24px;
+    }
+
+    .site-logo {
+      position: relative;
+      width: 175px;
+      height: 26px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .site-logo img.logo-mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 23.37%;
+      height: 100%;
+      object-fit: contain;
+      -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/28106833-7d6f-4f3e-9da3-26994cf18467');
+      mask-image: url('https://www.figma.com/api/mcp/asset/28106833-7d6f-4f3e-9da3-26994cf18467');
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    .site-logo img.logo-text {
+      position: absolute;
+      top: 19.77%;
+      left: 27.43%;
+      bottom: 19.77%;
+      right: 0;
+      width: 72.57%;
+      height: 60.46%;
+      object-fit: contain;
+      -webkit-mask-image: url('https://www.figma.com/api/mcp/asset/a921617e-a085-41ef-8477-42bbb6fcd770'), url('https://www.figma.com/api/mcp/asset/e62aeadf-57ed-4490-9176-00b3fd250a3e');
+      mask-image: url('https://www.figma.com/api/mcp/asset/a921617e-a085-41ef-8477-42bbb6fcd770'), url('https://www.figma.com/api/mcp/asset/e62aeadf-57ed-4490-9176-00b3fd250a3e');
+      -webkit-mask-position: -48.096px -5.141px, 0px 0px;
+      mask-position: -48.096px -5.141px, 0px 0px;
+      -webkit-mask-repeat: no-repeat, no-repeat;
+      mask-repeat: no-repeat, no-repeat;
+    }
+
+    .site-header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-dashboard {
+      height: 36px;
+      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #04141d;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-dashboard:hover {
+      background: #f1f5f9;
+    }
+
+    .site-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: #f5f5f5;
+      flex-shrink: 0;
+    }
+
+    .site-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Hero wrapper ── */
+    .vehicle-hero {
+      background: white;
+    }
+
+    /* ── Header ── */
+    .hero-header {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+    }
+
+    .hero-header-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .vehicle-meta {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vehicle-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      color: #04141d;
+    }
+
+    .vehicle-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #04141d;
+    }
+
+    /* ── Tags ── */
+    .tags-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 2px 8px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .badge-red-group {
+      display: flex;
+    }
+
+    .badge-red-left {
+      background: #b91c1c;
+      color: #fafafa;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .badge-red-right {
+      background: #fef2f2;
+      color: #b91c1c;
+      border-color: #b91c1c;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .badge-green {
+      background: #15803d;
+      color: #fafafa;
+      border-radius: 8px;
+    }
+
+    /* ── Buttons ── */
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .btn-ghost {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 40px;
+      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #04141d;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-ghost:hover {
+      background: #f1f5f9;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    /* ── Gallery ── */
+    .gallery-scroll {
+      overflow-x: auto;
+      cursor: grab;
+      user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .gallery-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-scroll.is-dragging {
+      cursor: grabbing;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 800px 393px 393px 393px;
+      grid-template-rows: 221px 221px;
+      gap: 8px;
+      padding: 24px 16px 0;
+      min-width: fit-content;
+    }
+
+    .gallery-main {
+      grid-row: 1 / 3;
+      border-radius: 8px;
+      overflow: hidden;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: #e2e8f0;
+      display: block;
+    }
+
+    .gallery-main img,
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .gallery-thumb {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    /* ── Scroll Nav ── */
+    .scroll-nav {
+      background: white;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 59px; /* updated dynamically by JS */
+      z-index: 100;
+      transition: top 0.25s ease;
+    }
+
+    .scroll-nav-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 16px 24px 0;
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .nav-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #64748b;
+      white-space: nowrap;
+      position: relative;
+      transition: color 0.15s;
+    }
+
+    .nav-tab:hover {
+      color: #04141d;
+    }
+
+    .nav-tab.active {
+      color: #04141d;
+    }
+
+    /* Otto tab always shows gradient text */
+    .nav-tab.otto-tab .tab-label {
+      background: linear-gradient(to right, #0190c3, #9648ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-tab.otto-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #0190c3, #9648ff);
+      border-radius: 16px 16px 0 0;
+    }
+
+    /* Black underline indicator for other active tabs */
+    .nav-tab.active:not(.otto-tab)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #04141d;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .otto-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    /* ── Content Sections ── */
+    .content-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    .content-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 28px;
+      color: #04141d;
+    }
+
+    /* Otto AI Card */
+    .otto-card {
+      background: linear-gradient(98.91deg, #e2f3ff 0%, #f5eeff 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .otto-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .otto-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 28px;
+      background: linear-gradient(to right, #0190c3, #9648ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .otto-badge {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .otto-body {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .popular-card {
+      background: linear-gradient(to bottom, #fffbeb, white);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      justify-content: center;
+    }
+
+    .popular-card-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #04141d;
+      text-align: center;
+    }
+
+    .popular-card-sub {
+      font-size: 14px;
+      font-weight: 400;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .disclosure-grid {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+      align-content: center;
+    }
+
+    .disclosure-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .disc-icon-green-sm {
+      width: 22px;
+      height: 22px;
+      background: #16a34a;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Blinking cursor shown while Otto streams text */
+    .otto-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: currentColor;
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .disc-label {
+      font-size: 16px;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .otto-summary-text {
+      font-size: 16px;
+      line-height: 24px;
+      background: linear-gradient(to right, #0190c3, #9648ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .otto-summary-text a {
+      text-decoration: underline;
+      background: linear-gradient(to right, #0190c3, #9648ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .feedback-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feedback-label {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .feedback-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .feedback-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      border: 1px solid #e5e5e5;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+
+    /* Reports */
+    .reports-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .report-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 80px;
+    }
+
+    .report-icon-wrap {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .report-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .report-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .report-link {
+      font-size: 14px;
+      color: #04141d;
+      text-decoration: underline;
+      cursor: pointer;
+      line-height: 20px;
+    }
+
+    /* Details */
+    .details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .details-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .detail-icon-wrap {
+      width: 40px;
+      height: 40px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .detail-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-label {
+      font-size: 16px;
+      color: #64748b;
+      line-height: 24px;
+    }
+
+    .detail-value {
+      font-size: 16px;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    /* Disclosures */
+    .disclosures-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .disc-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .disc-question {
+      flex: 1;
+      font-size: 16px;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .disc-answer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      min-width: 61px;
+    }
+
+    .disc-icon-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .disc-icon-yes { background: #15803d; }
+    .disc-icon-no  { background: #b91c1c; }
+
+    .disc-answer-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .disc-answer-no { color: #b91c1c; }
+
+    .disc-separator {
+      height: 1px;
+      background: #e2e8f0;
+      width: 100%;
+    }
+
+    .disc-sub-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .disc-sub-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    /* Condition Report */
+    .condition-layout {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .condition-image-panel {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px 0 0 6px;
+      padding: 10px;
+      background: white;
+      flex-shrink: 0;
+      height: 490px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative; /* needed for SVG overlay */
+    }
+
+    .condition-image-panel img {
+      height: 100%;
+      width: auto;
+      max-width: 380px;
+      object-fit: contain;
+    }
+
+    /* Hotspot SVG overlay */
+    .car-hotspot-svg {
+      position: absolute;
+      inset: 10px; /* matches panel padding */
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      pointer-events: none; /* let paths handle their own events */
+    }
+
+    .car-hotspot {
+      pointer-events: all;
+      cursor: pointer;
+      transition: fill-opacity 0.15s;
+    }
+
+    .car-hotspot:hover { fill-opacity: 0.25 !important; }
+    .car-hotspot.active { fill-opacity: 0.35 !important; stroke-opacity: 1 !important; }
+
+    /* Hotspot tooltip */
+    .hotspot-tooltip {
+      position: absolute;
+      background: #04141d;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.15s;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .hotspot-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #04141d;
+    }
+
+    .hotspot-tooltip.visible { opacity: 1; }
+
+    .condition-detail-panel {
+      border-top: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      border-radius: 0 8px 8px 0;
+      background: white;
+      flex: 1;
+      height: 490px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .damage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .damage-number {
+      font-size: 16px;
+      font-weight: 700;
+      color: #b91c1c;
+      line-height: 24px;
+    }
+
+    .damage-nav-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .damage-nav-btn {
+      width: 24px;
+      height: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .damage-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #04141d;
+      line-height: 24px;
+      margin-top: 4px;
+    }
+
+    .damage-desc {
+      font-size: 16px;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .damage-photo {
+      flex: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #d9d9d9;
+      margin-top: 4px;
+    }
+
+    .damage-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Seller Comments */
+    .seller-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .seller-item {
+      font-size: 16px;
+      color: #04141d;
+      line-height: 24px;
+    }
+
+    .seller-item strong {
+      font-weight: 700;
+    }
+
+    /* ── Auction Sidebar ── */
+    .auction-sidebar {
+      width: 450px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 115px; /* header + scroll-nav — updated dynamically by JS */
+      align-self: flex-start;
+      z-index: 150; /* above scroll-nav (100) so it overlaps it */
+    }
+
+    .auction-panel {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .auction-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .auction-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 28px;
+      color: #04141d;
+    }
+
+    /* Bid info box */
+    .bid-info-box {
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .bid-info-top {
+      display: flex;
+      background: #fafaf9;
+    }
+
+    .bid-info-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      height: 68px;
+    }
+
+    .bid-info-cell + .bid-info-cell {
+      border-left: 1px solid #e2e8f0;
+    }
+
+    .bid-current-amount {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      color: #04141d;
+      text-align: center;
+    }
+
+    .bid-timer {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      color: #b91c1c;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .bid-cell-label {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .bid-separator {
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .bid-stepper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 82px;
+      border-radius: 0 0 16px 16px;
+      background: white;
+    }
+
+    .stepper-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .stepper-btn:hover {
+      border-color: #e2e8f0;
+      background: #f8fafc;
+    }
+    .stepper-btn:disabled { opacity: 0.5; cursor: default; }
+
+    .stepper-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stepper-value {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      color: #04141d;
+      text-align: center;
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 180px;
+      font-family: 'Inter', sans-serif;
+      caret-color: #04141d;
+    }
+
+    /* "Your next bid" overlaps the bottom border of bid-info-box */
+    .bid-helper-row {
+      display: flex;
+      align-items: center;
+      margin-top: -12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bid-helper-line {
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .bid-helper-text {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #64748b;
+      background: white;
+      padding: 0 12px;
+      white-space: nowrap;
+    }
+
+    /* Auto bid */
+    .auto-bid-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .auto-bid-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auto-bid-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      color: #04141d;
+    }
+
+    .auto-bid-desc {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #04141d;
+    }
+
+    .auto-bid-desc a {
+      color: #04141d;
+      text-decoration: underline;
+    }
+
+    .switch {
+      width: 36px;
+      height: 20px;
+      border-radius: 9999px;
+      background: #e5e5e5;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 2px;
+    }
+
+    .switch.on { background: #04141d; }
+
+    .switch-thumb {
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 9999px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: left 0.2s;
+      box-shadow: 0 4px 6px -4px rgba(0,0,0,0.1), 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .switch.on .switch-thumb { left: 16px; }
+
+    /* Place bid */
+    .place-bid-wrap {
+      background: #fff7ed;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .btn-place-bid {
+      width: 100%;
+      height: 56px;
+      background: #04141d;
+      border: none;
+      border-radius: 16px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-place-bid:hover { background: #1a2f3a; }
+
+    .going-fast {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 14px;
+      color: #c2410c;
+      line-height: 20px;
+    }
+
+    .going-fast strong { font-weight: 600; }
+
+    /* Footer */
+    .auction-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .auction-footer-btn {
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #04141d;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: #04141d;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px;
+      pointer-events: none;
+    }
+    .lightbox-counter {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+    .lightbox-close {
+      position: absolute;
+      right: 24px;
+      top: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      flex-shrink: 0;
+    }
+    .lightbox-main {
+      width: calc(100% - 160px);
+      max-width: 1136px;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 64px;
+      margin-bottom: 20px;
+      aspect-ratio: 16 / 9;
+      background: #0a1e2a;
+    }
+    .lightbox-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .lightbox-arrow {
+      position: absolute;
+      top: calc(50% - 80px);
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .lightbox-arrow:hover { background: rgba(255,255,255,0.28); }
+    .lightbox-arrow-left  { left: 50px; }
+    .lightbox-arrow-right { right: 50px; }
+
+    .lightbox-thumbs {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 0 24px 24px;
+      scrollbar-width: none;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+    .lightbox-thumbs::-webkit-scrollbar { display: none; }
+
+    .lightbox-thumb {
+      width: 160px;
+      height: 100px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 2px solid transparent;
+      padding: 0;
+      background: #0a1e2a;
+      transition: border-color 0.15s;
+    }
+    .lightbox-thumb.active { border-color: white; }
+    .lightbox-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Site Header ── -->
+  <header class="site-header" id="site-header">
+    <div class="site-header-inner">
+      <div class="site-logo">
+        <img class="logo-mark" src="https://www.figma.com/api/mcp/asset/b1cdf944-a2eb-4967-8069-145a48f5fd0f" alt="">
+        <img class="logo-text" src="https://www.figma.com/api/mcp/asset/a928f6d8-0112-459a-9ed0-b6fa62294dd4" alt="TRADEBID">
+      </div>
+      <div class="site-header-right">
+        <button class="btn-dashboard">My Dashboard</button>
+        <div class="site-avatar">
+          <img src="https://www.figma.com/api/mcp/asset/7b5266ab-7845-44b2-88d7-38e4c57cda15" alt="User avatar">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="vehicle-hero">
+
+    <!-- ── Header ── -->
+    <div class="hero-header">
+      <div class="hero-header-inner">
+        <div class="vehicle-meta">
+          <h1 class="vehicle-title">Skoda KAMIQ 1.0 TSI Bns Edition</h1>
+          <p class="vehicle-subtitle">G194GN &bull; 2019 &bull; 81,113 KM &bull; Petrol &bull; Semi Automatic</p>
+          <div class="tags-row">
+            <div class="badge-red-group">
+              <span class="badge badge-red-left">Red light</span>
+              <span class="badge badge-red-right">No arbitration</span>
+            </div>
+            <span class="badge badge-green">Reserve met</span>
+          </div>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-ghost">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"/>
+              <circle cx="6" cy="12" r="3"/>
+              <circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+            Share
+          </button>
+          <button class="btn-ghost">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            Watchlist
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Gallery ── -->
+    <!--
+      Grid layout: 1 large image (spanning 2 rows) + 3 columns × 2 rows of thumbnails.
+      Images from Figma — valid for 7 days. Replace src URLs with your own if they expire.
+    -->
+    <div class="gallery-scroll"><div class="gallery">
+      <button class="gallery-main">
+        <img
+          src="https://www.figma.com/api/mcp/asset/dde381dc-6f39-4f89-8c7c-b442228185d4"
+          alt="Skoda KAMIQ — main view"
+        />
+      </button>
+
+      <!-- Row 1: thumbnails left → right -->
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/b844cfc1-b6d8-4146-804a-88623866ab01" alt="Vehicle photo" />
+      </div>
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/710fc290-a4e8-44bb-8c2e-8b767220cb22" alt="Vehicle photo" />
+      </div>
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/b844cfc1-b6d8-4146-804a-88623866ab01" alt="Vehicle photo" />
+      </div>
+
+      <!-- Row 2: thumbnails left → right -->
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/e9a3ab9e-1660-4acd-98b2-be022dca2aeb" alt="Vehicle photo" />
+      </div>
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/16de2b6f-1d14-4d65-9d82-2d3853e1dcb0" alt="Vehicle photo" />
+      </div>
+      <div class="gallery-thumb">
+        <img src="https://www.figma.com/api/mcp/asset/e9a3ab9e-1660-4acd-98b2-be022dca2aeb" alt="Vehicle photo" />
+      </div>
+    </div></div>
+
+  </section>
+
+  <!-- ── Sticky / Scroll Navigation ── -->
+  <nav class="scroll-nav">
+    <div class="scroll-nav-inner">
+      <div class="nav-tabs">
+        <button class="nav-tab otto-tab active" data-target="section-otto">
+          <img class="otto-icon" src="https://www.figma.com/api/mcp/asset/6f1b36ec-c1c0-47f5-8cfb-c9978d206881" alt="">
+          <span class="tab-label">Otto summary</span>
+        </button>
+        <button class="nav-tab" data-target="section-details"><span class="tab-label">Details</span></button>
+        <button class="nav-tab" data-target="section-disclosures"><span class="tab-label">Disclosures</span></button>
+        <button class="nav-tab" data-target="section-condition"><span class="tab-label">Condition report</span></button>
+        <button class="nav-tab" data-target="section-seller"><span class="tab-label">Seller comments</span></button>
+      </div>
+      <div class="action-buttons">
+        <button class="btn-ghost">
+          <img class="icon" src="https://www.figma.com/api/mcp/asset/a76129a2-b94e-4023-954c-7cde91b66eb1" alt="">
+          Share
+        </button>
+        <button class="btn-ghost">
+          <img class="icon" src="https://www.figma.com/api/mcp/asset/8e523fda-1b75-47dc-bd48-496f858037ea" alt="">
+          Watchlist
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Main Content ── -->
+  <main class="content-wrapper">
+    <div class="content-sections">
+
+      <!-- Otto AI Summary -->
+      <div class="otto-card" id="section-otto">
+        <div class="otto-header">
+          <img src="https://www.figma.com/api/mcp/asset/7a6852e6-fb48-44e4-b03a-c41dde760e77" alt="" style="width:29px;height:28px;flex-shrink:0">
+          <span class="otto-title">Otto AI Summary</span>
+          <span class="otto-badge">BETA</span>
+        </div>
+        <div class="otto-body">
+          <div class="popular-card">
+            <img src="https://www.figma.com/api/mcp/asset/74fa770f-97a5-4471-9961-fad4f8d66ec2" alt="" style="width:29px;height:36px">
+            <span class="popular-card-text">Popular vehicle</span>
+            <span class="popular-card-sub">20+ units sold</span>
+          </div>
+          <div class="disclosure-grid">
+            <div class="disclosure-item">
+              <div class="disc-icon-green-sm">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="disc-label">Clean title</span>
+            </div>
+            <div class="disclosure-item">
+              <div class="disc-icon-green-sm">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="disc-label">Low mileage</span>
+            </div>
+            <div class="disclosure-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="disc-label">Damage windscreen</span>
+            </div>
+            <div class="disclosure-item">
+              <div class="disc-icon-green-sm">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="disc-label">0 accidents</span>
+            </div>
+            <div class="disclosure-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="disc-label">Rental use</span>
+            </div>
+            <div class="disclosure-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="disc-label">Front bumper scratch</span>
+            </div>
+          </div>
+        </div>
+        <p class="otto-summary-text" id="otto-summary-text">The 2019 Skoda Kamiq 1.0 TSI Business Edition is a practical and efficient compact SUV, well suited to everyday driving and commuting. With 81,113 km recorded, the vehicle reflects normal and reasonable usage for its age. <a href="#" id="otto-read-more">Read more</a></p>
+        <div class="feedback-row">
+          <span class="feedback-label">Found this helpful?</span>
+          <div class="feedback-buttons">
+            <button class="feedback-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04141d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </button>
+            <button class="feedback-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04141d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports -->
+      <div class="card">
+        <h2 class="card-title">Reports</h2>
+        <div class="reports-grid">
+          <div class="report-card">
+            <div class="report-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="report-info">
+              <span class="report-title">History report</span>
+              <span class="report-link">View report</span>
+            </div>
+          </div>
+          <div class="report-card">
+            <div class="report-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="report-info">
+              <span class="report-title">Condition report</span>
+              <span class="report-link">View report</span>
+            </div>
+          </div>
+          <div class="report-card">
+            <div class="report-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="report-info">
+              <span class="report-title">Inspection report</span>
+              <span class="report-link">View report</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="card" id="section-details">
+        <h2 class="card-title">Details</h2>
+        <div class="details-list">
+          <div class="details-row">
+            <div class="detail-item">
+              <img src="https://www.figma.com/api/mcp/asset/ebe5292c-8d41-4207-9b01-c696f6dad94a" alt="" style="width:40px;height:40px;flex-shrink:0;border-radius:8px">
+              <div class="detail-text"><span class="detail-label">Make</span><span class="detail-value">Skoda</span></div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/01274173-4b11-41b8-9a2b-081fc80254af" alt="" style="width:20px;height:16px"></div>
+              <div class="detail-text"><span class="detail-label">Model</span><span class="detail-value">Kamiq</span></div>
+            </div>
+            <div class="detail-item">
+              <img src="https://www.figma.com/api/mcp/asset/a270f57d-edee-4c7d-ac98-00e06a05b857" alt="" style="width:40px;height:40px;flex-shrink:0;border-radius:8px">
+              <div class="detail-text"><span class="detail-label">Registration</span><span class="detail-value">G194GN</span></div>
+            </div>
+          </div>
+          <div class="details-row">
+            <div class="detail-item">
+              <div class="detail-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- filled body -->
+                  <rect x="2" y="4" width="20" height="18" rx="3" fill="#04141d"/>
+                  <!-- pin bumps above the body -->
+                  <path d="M8 2v5M16 2v5" stroke="#04141d" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- header bar (slightly lighter strip) -->
+                  <rect x="2" y="4" width="20" height="6" rx="3" fill="#1e3a4a"/>
+                  <rect x="2" y="7" width="20" height="3" fill="#1e3a4a"/>
+                  <!-- 3×2 day-dot grid in white -->
+                  <rect x="6"  y="14" width="3" height="3" rx="0.75" fill="white"/>
+                  <rect x="10.5" y="14" width="3" height="3" rx="0.75" fill="white"/>
+                  <rect x="15" y="14" width="3" height="3" rx="0.75" fill="white"/>
+                  <rect x="6"  y="19" width="3" height="3" rx="0.75" fill="white"/>
+                  <rect x="10.5" y="19" width="3" height="3" rx="0.75" fill="white"/>
+                  <rect x="15" y="19" width="3" height="3" rx="0.75" fill="white"/>
+                </svg>
+              </div>
+              <div class="detail-text"><span class="detail-label">Year</span><span class="detail-value">2019</span></div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/2bbfefc0-7c8d-49ea-a38f-d0811c82c51d" alt="" style="width:20px;height:20px"></div>
+              <div class="detail-text"><span class="detail-label">Mileage</span><span class="detail-value">81,113 Kms</span></div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/fb1b96d3-b238-4049-a783-c8ffeb71cdc1" alt="" style="width:20px;height:20px"></div>
+              <div class="detail-text"><span class="detail-label">Fuel type</span><span class="detail-value">Petrol</span></div>
+            </div>
+          </div>
+          <div class="details-row">
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/bc8bb520-0b37-4057-8f18-fc5994741145" alt="" style="width:25px;height:16px"></div>
+              <div class="detail-text"><span class="detail-label">Gearbox</span><span class="detail-value">Semi auto</span></div>
+            </div>
+            <div class="detail-item">
+              <img src="https://www.figma.com/api/mcp/asset/9de51daf-02cd-4508-ac30-50e1f2a46195" alt="" style="width:40px;height:40px;flex-shrink:0;border-radius:8px">
+              <div class="detail-text"><span class="detail-label">Body type</span><span class="detail-value">SUV</span></div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/ec60b78b-0225-4df0-bed2-bdd1fb762651" alt="" style="width:14px;height:20px"></div>
+              <div class="detail-text"><span class="detail-label">Colour</span><span class="detail-value">Red</span></div>
+            </div>
+          </div>
+          <div class="details-row">
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/94a92c5a-073a-4135-80e0-978ceb9fa5ed" alt="" style="width:20px;height:20px"></div>
+              <div class="detail-text"><span class="detail-label">Seats</span><span class="detail-value">5</span></div>
+            </div>
+            <div class="detail-item">
+              <img src="https://www.figma.com/api/mcp/asset/623c3c43-d607-4529-976f-ff137f3800f3" alt="" style="width:40px;height:40px;flex-shrink:0;border-radius:8px">
+              <div class="detail-text"><span class="detail-label">Doors</span><span class="detail-value">5</span></div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-icon-wrap"><img src="https://www.figma.com/api/mcp/asset/67182000-a4f0-4f14-a31e-c0c028739b5e" alt="" style="width:20px;height:20px"></div>
+              <div class="detail-text"><span class="detail-label">Owners</span><span class="detail-value">1</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disclosures -->
+      <div class="card" id="section-disclosures">
+        <h2 class="card-title">Disclosures</h2>
+        <div class="disclosures-list">
+          <div class="disc-row">
+            <span class="disc-question">Two or more keys present</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <span class="disc-answer-text disc-answer-no">No</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Engine operating correctly</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-yes"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="disc-answer-text">Yes</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Gearbox operating correctly</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-yes"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="disc-answer-text">Yes</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Warning Lights On</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <span class="disc-answer-text disc-answer-no">No</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div>
+            <div class="disc-row" style="margin-bottom:24px">
+              <span class="disc-question">Aftermarket modifications?</span>
+            </div>
+            <div class="disc-sub-items">
+              <div class="disc-sub-row">
+                <span class="disc-question">• Window Tint</span>
+                <div class="disc-answer">
+                  <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                  <span class="disc-answer-text disc-answer-no">No</span>
+                </div>
+              </div>
+              <div class="disc-sub-row">
+                <span class="disc-question">• Wheels</span>
+                <div class="disc-answer">
+                  <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                  <span class="disc-answer-text disc-answer-no">No</span>
+                </div>
+              </div>
+              <div class="disc-sub-row">
+                <span class="disc-question">• Audio system</span>
+                <div class="disc-answer">
+                  <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                  <span class="disc-answer-text disc-answer-no">No</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Has the timing belt/chain been serviced within the last 50,000km</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <span class="disc-answer-text disc-answer-no">No</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Service books present in the vehicle</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-yes"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="disc-answer-text">Yes</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Vehicle has air conditioning</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-no"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <span class="disc-answer-text disc-answer-no">No</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">Air conditioning fully operational</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-yes"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="disc-answer-text">Yes</span>
+            </div>
+          </div>
+          <div class="disc-separator"></div>
+          <div class="disc-row">
+            <span class="disc-question">All electronics working correctly</span>
+            <div class="disc-answer">
+              <div class="disc-icon-circle disc-icon-yes"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="disc-answer-text">Yes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Condition Report -->
+      <div class="card" id="section-condition">
+        <h2 class="card-title">Condition report</h2>
+        <div class="condition-layout">
+          <div class="condition-image-panel" id="condition-image-panel">
+            <img src="https://www.figma.com/api/mcp/asset/4002eccc-d244-4086-9a9e-5319a0203d37" alt="Vehicle condition diagram">
+
+            <!-- Hotspot tooltip -->
+            <div class="hotspot-tooltip" id="hotspot-tooltip"></div>
+
+            <!-- SVG hotspot overlay — viewBox matches the car image's natural proportions -->
+            <svg class="car-hotspot-svg" id="car-hotspot-svg"
+                 viewBox="0 0 380 470" preserveAspectRatio="xMidYMid meet"
+                 xmlns="http://www.w3.org/2000/svg">
+
+              <!-- Windshield (damage 0) -->
+              <path class="car-hotspot active" data-index="0"
+                fill="#3b82f6" fill-opacity="0.2"
+                stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.8"
+                d="M148,100 L232,100 L252,158 L128,158 Z"/>
+
+              <!-- Front bumper (damage 1) -->
+              <rect class="car-hotspot" data-index="1"
+                x="130" y="22" width="120" height="52" rx="8"
+                fill="#f97316" fill-opacity="0"
+                stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+
+              <!-- Driver-side front wheel arch (damage 2) -->
+              <ellipse class="car-hotspot" data-index="2"
+                cx="62" cy="118" rx="38" ry="48"
+                fill="#f97316" fill-opacity="0"
+                stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+            </svg>
+          </div>
+
+          <div class="condition-detail-panel">
+            <div>
+              <div class="damage-header">
+                <span class="damage-number" id="damage-number">Damage 1 of 3</span>
+                <div class="damage-nav-btns">
+                  <button class="damage-nav-btn" id="damage-prev">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M6 2L2 6L6 10" stroke="#04141d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button class="damage-nav-btn" id="damage-next">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none"><path d="M2 2L6 6L2 10" stroke="#04141d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+              <p class="damage-title" id="damage-title">Cracked windscreen</p>
+              <p class="damage-desc" id="damage-desc">2 inch crack on bottom right corner of the front windscreen.</p>
+            </div>
+            <div class="damage-photo">
+              <img id="damage-photo-img" src="https://www.figma.com/api/mcp/asset/d25c7c78-9952-4a12-a889-d5c3de958902" alt="Cracked windscreen">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Comments -->
+      <div class="card" id="section-seller">
+        <h2 class="card-title">Seller comments</h2>
+        <div class="seller-list">
+          <div class="seller-item"><strong>1. Warranty:</strong> Drive train warranty until Jan 01, 2027. Battery warranty until Jan 01, 2027.</div>
+          <div class="disc-separator"></div>
+          <div class="seller-item"><strong>2. Tyre condition:</strong> Slight wear on front passenger tyre.</div>
+          <div class="disc-separator"></div>
+          <div class="seller-item"><strong>3. Wheel arch:</strong> Minor scratch on front driver side wheel arch.</div>
+          <div class="disc-separator"></div>
+          <div class="seller-item"><strong>4. Front Bumper:</strong> Scratched paint on front bumper.</div>
+          <div class="disc-separator"></div>
+          <div class="seller-item"><strong>5. Door:</strong> Slight misalignment on the driver's side door.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Auction Sidebar (sticky right column) ── -->
+    <aside class="auction-sidebar" id="auction-sidebar">
+      <div class="auction-panel">
+
+        <!-- Header -->
+        <div class="auction-panel-header">
+          <span class="auction-title">Live auction</span>
+          <span class="badge badge-green">Reserve met</span>
+        </div>
+
+        <!-- Bid Info Box -->
+        <div>
+          <div class="bid-info-box">
+            <div class="bid-info-top">
+              <div class="bid-info-cell">
+                <span class="bid-current-amount">€12,000</span>
+                <span class="bid-cell-label">Current bid</span>
+              </div>
+              <div class="bid-info-cell">
+                <span class="bid-timer" id="auction-timer">00:15:59</span>
+                <span class="bid-cell-label">Time left</span>
+              </div>
+            </div>
+            <div class="bid-separator"></div>
+            <div class="bid-stepper">
+              <button class="stepper-btn" id="stepper-minus" onclick="adjustBid(-100)">
+                <svg width="14" height="2" viewBox="0 0 14 2" fill="none"><rect x="0" y="0.5" width="14" height="1" rx="0.5" fill="#04141d"/></svg>
+              </button>
+              <div class="stepper-center">
+                <input class="stepper-value" id="stepper-value" type="text" value="€12,100">
+              </div>
+              <button class="stepper-btn" id="stepper-plus" onclick="adjustBid(100)">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="6" y="0" width="2" height="14" rx="1" fill="#04141d"/><rect x="0" y="6" width="14" height="2" rx="1" fill="#04141d"/></svg>
+              </button>
+            </div>
+          </div>
+          <!-- "Your next bid" overlaps the bottom border of bid-info-box -->
+          <div class="bid-helper-row">
+            <div class="bid-helper-line"></div>
+            <span class="bid-helper-text">Your next bid</span>
+            <div class="bid-helper-line"></div>
+          </div>
+        </div>
+
+        <!-- Auto Bid -->
+        <div class="auto-bid-row" onclick="toggleSwitch()">
+          <div class="auto-bid-info">
+            <span class="auto-bid-title">Set auto bid</span>
+            <span class="auto-bid-desc">Automate bids to stay ahead. <a href="#" onclick="return false">Learn more</a></span>
+          </div>
+          <div class="switch" id="auto-bid-switch">
+            <div class="switch-thumb"></div>
+          </div>
+        </div>
+
+        <!-- Place Bid -->
+        <div class="place-bid-wrap">
+          <button class="btn-place-bid">Place bid</button>
+          <div class="going-fast">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></svg>
+            <span>Going fast! <strong>3 bids in last 5 mins</strong></span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="auction-footer">
+          <button class="auction-footer-btn">Buyer fees</button>
+          <button class="auction-footer-btn">8 Bids</button>
+        </div>
+
+      </div>
+    </aside>
+
+  </main>
+
+  <script>
+    // ── Tab click: smooth-scroll to section ──
+    (function () {
+      const tabs = document.querySelectorAll('.nav-tab[data-target]');
+
+      function getOffset() {
+        const h = document.getElementById('site-header');
+        const n = document.querySelector('.scroll-nav');
+        return (h ? h.offsetHeight : 0) + (n ? n.offsetHeight : 0) + 16;
+      }
+
+      function setActiveTab(targetId) {
+        tabs.forEach(t => t.classList.remove('active'));
+        const active = document.querySelector(`.nav-tab[data-target="${targetId}"]`);
+        if (active) active.classList.add('active');
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const id = tab.dataset.target;
+          const el = document.getElementById(id);
+          if (!el) return;
+          setActiveTab(id);
+          const top = el.getBoundingClientRect().top + window.scrollY - getOffset();
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+
+      // ── Scroll spy: update active tab as sections scroll into view ──
+      const sectionIds = ['section-otto', 'section-details', 'section-disclosures', 'section-condition', 'section-seller'];
+      let scrollingByClick = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        if (scrollingByClick) return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveTab(entry.target.id);
+        });
+      }, {
+        rootMargin: '-' + (getOffset()) + 'px 0px -55% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+      // Suppress spy briefly after a click so it doesn't fight the smooth scroll
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          scrollingByClick = true;
+          setTimeout(() => { scrollingByClick = false; }, 800);
+        });
+      });
+    })();
+
+    (function () {
+      const scroller = document.querySelector('.gallery-scroll');
+      let isDragging = false;
+      let startX, scrollLeft;
+
+      scroller.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        scroller.classList.add('is-dragging');
+        startX = e.pageX - scroller.offsetLeft;
+        scrollLeft = scroller.scrollLeft;
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        scroller.classList.remove('is-dragging');
+      });
+
+      scroller.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - scroller.offsetLeft;
+        scroller.scrollLeft = scrollLeft - (x - startX);
+      });
+    })();
+
+    // ── Sync body offset, scroll-nav sticky, and sidebar sticky to exact measured heights ──
+    (function () {
+      const header   = document.getElementById('site-header');
+      const scrollNav = document.querySelector('.scroll-nav');
+      const sidebar  = document.getElementById('auction-sidebar');
+
+      const headerH  = header.offsetHeight;
+      document.body.style.paddingTop = headerH + 'px';
+
+      // Scroll nav sticks just below the fixed site header
+      scrollNav.style.top = headerH + 'px';
+
+      // Sidebar: pull up so the bid-separator aligns with the bottom of the scroll-nav
+      const navH = scrollNav.offsetHeight;
+      const wrapperPadTop = 32; // matches content-wrapper padding-top
+      if (sidebar) {
+        const separator = sidebar.querySelector('.bid-separator');
+        // Distance from sidebar top edge to the separator (measured before any margin-top is applied)
+        const separatorFromTop = separator.getBoundingClientRect().top - sidebar.getBoundingClientRect().top;
+        // Pulling up by (wrapperPadTop + separatorFromTop) lands the separator exactly at the nav bottom
+        sidebar.style.marginTop = -(wrapperPadTop + separatorFromTop) + 'px';
+        sidebar.style.top = (headerH + navH + 24) + 'px';
+      }
+    })();
+
+    // ── Bid stepper ──
+    var bidAmount = 12100;
+    var minBid = 12100;
+    function adjustBid(delta) {
+      bidAmount = Math.max(minBid, bidAmount + delta);
+      document.getElementById('stepper-value').value = '€' + bidAmount.toLocaleString('en-IE');
+    }
+
+    // ── Auto bid toggle ──
+    function toggleSwitch() {
+      document.getElementById('auto-bid-switch').classList.toggle('on');
+    }
+
+    // ── Countdown timer ──
+    (function () {
+      var totalSeconds = 15 * 60 + 59;
+      var timerEl = document.getElementById('auction-timer');
+      function tick() {
+        if (totalSeconds <= 0) { timerEl.textContent = '00:00:00'; return; }
+        totalSeconds--;
+        var h = Math.floor(totalSeconds / 3600);
+        var m = Math.floor((totalSeconds % 3600) / 60);
+        var s = totalSeconds % 60;
+        timerEl.textContent =
+          String(h).padStart(2, '0') + ':' +
+          String(m).padStart(2, '0') + ':' +
+          String(s).padStart(2, '0');
+        setTimeout(tick, 1000);
+      }
+      setTimeout(tick, 1000);
+    })();
+
+    // ── Hide header on scroll down, show on scroll up ──
+    (function () {
+      const header  = document.getElementById('site-header');
+      const scrollNav = document.querySelector('.scroll-nav');
+      const sidebar = document.getElementById('auction-sidebar');
+      const headerH = header.offsetHeight;
+      const navH    = scrollNav.offsetHeight;
+      let lastY = 0;
+
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > lastY && y > 60) {
+          header.classList.add('hidden');
+          scrollNav.style.top = '0px';
+          if (sidebar) sidebar.style.top = (navH + 24) + 'px';
+        } else {
+          header.classList.remove('hidden');
+          scrollNav.style.top = headerH + 'px';
+          if (sidebar) sidebar.style.top = (headerH + navH + 24) + 'px';
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    // ── Otto AI "Read more" streaming interaction ──
+    (function () {
+      const link = document.getElementById('otto-read-more');
+      const para = document.getElementById('otto-summary-text');
+      if (!link || !para) return;
+
+      const extraText = ' The engine performs reliably with no warning lights or active faults reported at the time of inspection. The semi-automatic gearbox operates smoothly and gear changes are clean with no hesitation. The overall condition of the vehicle is consistent with normal usage for its age and mileage. Cosmetic defects — including the cracked windscreen and a scratch on the front bumper — are clearly disclosed and reflected in the pricing. The vehicle presents well for its mileage category and would suit a buyer looking for a practical, fuel-efficient compact SUV with a solid service history.';
+
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        link.remove();
+        const stream = document.createElement('span');
+        const cursor = document.createElement('span');
+        cursor.className = 'otto-cursor';
+        para.appendChild(stream);
+        para.appendChild(cursor);
+        let i = 0;
+        function tick() {
+          if (i < extraText.length) {
+            stream.textContent += extraText[i];
+            i++;
+            setTimeout(tick, i % 3 === 0 ? 20 : 14);
+          } else {
+            cursor.remove();
+          }
+        }
+        tick();
+      });
+    })();
+
+    // ── Condition report — clickable hotspots ──
+    (function () {
+      const damages = [
+        {
+          label:  'Windshield',
+          number: 'Damage 1 of 3',
+          title:  'Cracked windscreen',
+          desc:   '2 inch crack on bottom right corner of the front windscreen.',
+          photo:  'https://www.figma.com/api/mcp/asset/d25c7c78-9952-4a12-a889-d5c3de958902'
+        },
+        {
+          label:  'Front bumper',
+          number: 'Damage 2 of 3',
+          title:  'Front bumper scratch',
+          desc:   'Scratched paint on front bumper, visible along the lower lip.',
+          photo:  'https://www.figma.com/api/mcp/asset/d25c7c78-9952-4a12-a889-d5c3de958902'
+        },
+        {
+          label:  'Wheel arch',
+          number: 'Damage 3 of 3',
+          title:  'Wheel arch scratch',
+          desc:   'Minor scratch on front driver side wheel arch.',
+          photo:  'https://www.figma.com/api/mcp/asset/d25c7c78-9952-4a12-a889-d5c3de958902'
+        }
+      ];
+
+      let current = 0;
+
+      const numEl   = document.getElementById('damage-number');
+      const titleEl = document.getElementById('damage-title');
+      const descEl  = document.getElementById('damage-desc');
+      const photoEl = document.getElementById('damage-photo-img');
+      const tooltip = document.getElementById('hotspot-tooltip');
+      const hotspots = document.querySelectorAll('.car-hotspot');
+      const panel   = document.getElementById('condition-image-panel');
+
+      function showDamage(index) {
+        current = index;
+        const d = damages[index];
+        numEl.textContent   = d.number;
+        titleEl.textContent = d.title;
+        descEl.textContent  = d.desc;
+        photoEl.src         = d.photo;
+        photoEl.alt         = d.title;
+
+        hotspots.forEach((h, i) => h.classList.toggle('active', i === index));
+      }
+
+      // Hotspot click & hover
+      hotspots.forEach(function (spot) {
+        const idx = parseInt(spot.dataset.index, 10);
+
+        spot.addEventListener('click', function () { showDamage(idx); });
+
+        spot.addEventListener('mouseenter', function (e) {
+          tooltip.textContent = damages[idx].label;
+          tooltip.classList.add('visible');
+          positionTooltip(e);
+        });
+
+        spot.addEventListener('mousemove', positionTooltip);
+
+        spot.addEventListener('mouseleave', function () {
+          tooltip.classList.remove('visible');
+        });
+      });
+
+      function positionTooltip(e) {
+        const rect = panel.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top  = (y - tooltip.offsetHeight - 12) + 'px';
+      }
+
+      // Prev / next nav buttons
+      document.getElementById('damage-prev').addEventListener('click', function () {
+        showDamage((current - 1 + damages.length) % damages.length);
+      });
+      document.getElementById('damage-next').addEventListener('click', function () {
+        showDamage((current + 1) % damages.length);
+      });
+    })();
+
+    // ── Lightbox ──
+    (function () {
+      const images = [
+        'https://www.figma.com/api/mcp/asset/dde381dc-6f39-4f89-8c7c-b442228185d4',
+        'https://www.figma.com/api/mcp/asset/b844cfc1-b6d8-4146-804a-88623866ab01',
+        'https://www.figma.com/api/mcp/asset/710fc290-a4e8-44bb-8c2e-8b767220cb22',
+        'https://www.figma.com/api/mcp/asset/b844cfc1-b6d8-4146-804a-88623866ab01',
+        'https://www.figma.com/api/mcp/asset/e9a3ab9e-1660-4acd-98b2-be022dca2aeb',
+        'https://www.figma.com/api/mcp/asset/16de2b6f-1d14-4d65-9d82-2d3853e1dcb0',
+        'https://www.figma.com/api/mcp/asset/e9a3ab9e-1660-4acd-98b2-be022dca2aeb'
+      ];
+
+      let current = 0;
+      let dragMoved = false;
+
+      const lightbox     = document.getElementById('lightbox');
+      const lbImg        = document.getElementById('lb-img');
+      const lbCounter    = document.getElementById('lb-counter');
+      const lbThumbsWrap = document.getElementById('lb-thumbs');
+
+      // Build thumbnail strip
+      images.forEach(function (src, i) {
+        const btn = document.createElement('button');
+        btn.className = 'lightbox-thumb' + (i === 0 ? ' active' : '');
+        btn.innerHTML = '<img src="' + src + '" alt="Photo ' + (i + 1) + '">';
+        btn.addEventListener('click', function () { show(i); });
+        lbThumbsWrap.appendChild(btn);
+      });
+
+      function show(index) {
+        current = (index + images.length) % images.length;
+        lbImg.src = images[current];
+        lbCounter.textContent = (current + 1) + ' / ' + images.length;
+        lbThumbsWrap.querySelectorAll('.lightbox-thumb').forEach(function (t, i) {
+          t.classList.toggle('active', i === current);
+        });
+        const active = lbThumbsWrap.querySelectorAll('.lightbox-thumb')[current];
+        if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      function openLightbox(index) {
+        show(index);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // Gallery main image
+      const galleryMain = document.querySelector('.gallery-main');
+      if (galleryMain) {
+        galleryMain.addEventListener('click', function () {
+          if (!dragMoved) openLightbox(0);
+        });
+      }
+
+      // Gallery thumbnails
+      document.querySelectorAll('.gallery-thumb').forEach(function (thumb, i) {
+        thumb.style.cursor = 'pointer';
+        thumb.addEventListener('click', function () {
+          if (!dragMoved) openLightbox(i + 1);
+        });
+      });
+
+      // Track drag vs click on the gallery scroller
+      const scroller = document.querySelector('.gallery-scroll');
+      if (scroller) {
+        scroller.addEventListener('mousedown', function () { dragMoved = false; });
+        scroller.addEventListener('mousemove', function () { if (scroller.classList.contains('is-dragging')) dragMoved = true; });
+        scroller.addEventListener('mouseup', function () { setTimeout(function () { dragMoved = false; }, 100); });
+      }
+
+      // Controls
+      document.getElementById('lb-close').addEventListener('click', closeLightbox);
+      document.getElementById('lb-prev').addEventListener('click', function () { show(current - 1); });
+      document.getElementById('lb-next').addEventListener('click', function () { show(current + 1); });
+
+      // Keyboard
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape')      closeLightbox();
+        if (e.key === 'ArrowLeft')   show(current - 1);
+        if (e.key === 'ArrowRight')  show(current + 1);
+      });
+
+      // Click dark backdrop to close
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+    })();
+  </script>
+
+  <!-- ── Lightbox overlay ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <div class="lightbox-header">
+      <span id="lb-counter" class="lightbox-counter">1 / 7</span>
+      <button id="lb-close" class="lightbox-close" aria-label="Close gallery">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 5L15 15M15 5L5 15" stroke="#04141d" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <button id="lb-prev" class="lightbox-arrow lightbox-arrow-left" aria-label="Previous image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="lightbox-main">
+      <img id="lb-img" src="" alt="Vehicle photo" />
+    </div>
+
+    <button id="lb-next" class="lightbox-arrow lightbox-arrow-right" aria-label="Next image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="lightbox-thumbs" id="lb-thumbs"></div>
+  </div>
+</body>
+</html>
