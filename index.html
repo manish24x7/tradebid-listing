@@ -2167,12 +2167,21 @@
       ];
 
       let current = 0;
-      let dragMoved = false;
+      let scrollStartX = 0;
+      const scroller = document.querySelector('.gallery-scroll');
 
       const lightbox     = document.getElementById('lightbox');
       const lbImg        = document.getElementById('lb-img');
       const lbCounter    = document.getElementById('lb-counter');
       const lbThumbsWrap = document.getElementById('lb-thumbs');
+
+      if (scroller) {
+        scroller.addEventListener('mousedown', function () { scrollStartX = scroller.scrollLeft; });
+      }
+
+      function wasDrag() {
+        return scroller && Math.abs(scroller.scrollLeft - scrollStartX) > 4;
+      }
 
       // Build thumbnail strip
       images.forEach(function (src, i) {
@@ -2209,7 +2218,7 @@
       const galleryMain = document.querySelector('.gallery-main');
       if (galleryMain) {
         galleryMain.addEventListener('click', function () {
-          if (!dragMoved) openLightbox(0);
+          if (!wasDrag()) openLightbox(0);
         });
       }
 
@@ -2217,17 +2226,9 @@
       document.querySelectorAll('.gallery-thumb').forEach(function (thumb, i) {
         thumb.style.cursor = 'pointer';
         thumb.addEventListener('click', function () {
-          if (!dragMoved) openLightbox(i + 1);
+          if (!wasDrag()) openLightbox(i + 1);
         });
       });
-
-      // Track drag vs click on the gallery scroller
-      const scroller = document.querySelector('.gallery-scroll');
-      if (scroller) {
-        scroller.addEventListener('mousedown', function () { dragMoved = false; });
-        scroller.addEventListener('mousemove', function () { if (scroller.classList.contains('is-dragging')) dragMoved = true; });
-        scroller.addEventListener('mouseup', function () { setTimeout(function () { dragMoved = false; }, 100); });
-      }
 
       // Controls
       document.getElementById('lb-close').addEventListener('click', closeLightbox);
