@@ -2167,20 +2167,20 @@
       ];
 
       let current = 0;
-      let scrollStartX = 0;
-      const scroller = document.querySelector('.gallery-scroll');
 
       const lightbox     = document.getElementById('lightbox');
       const lbImg        = document.getElementById('lb-img');
       const lbCounter    = document.getElementById('lb-counter');
       const lbThumbsWrap = document.getElementById('lb-thumbs');
 
-      if (scroller) {
-        scroller.addEventListener('mousedown', function () { scrollStartX = scroller.scrollLeft; });
-      }
-
-      function wasDrag() {
-        return scroller && Math.abs(scroller.scrollLeft - scrollStartX) > 4;
+      function addGalleryClick(el, index) {
+        var downX, downY;
+        el.addEventListener('mousedown', function (e) { downX = e.clientX; downY = e.clientY; });
+        el.addEventListener('mouseup', function (e) {
+          if (Math.abs(e.clientX - downX) < 8 && Math.abs(e.clientY - downY) < 8) {
+            openLightbox(index);
+          }
+        });
       }
 
       // Build thumbnail strip
@@ -2216,18 +2216,12 @@
 
       // Gallery main image
       const galleryMain = document.querySelector('.gallery-main');
-      if (galleryMain) {
-        galleryMain.addEventListener('click', function () {
-          if (!wasDrag()) openLightbox(0);
-        });
-      }
+      if (galleryMain) addGalleryClick(galleryMain, 0);
 
       // Gallery thumbnails
       document.querySelectorAll('.gallery-thumb').forEach(function (thumb, i) {
         thumb.style.cursor = 'pointer';
-        thumb.addEventListener('click', function () {
-          if (!wasDrag()) openLightbox(i + 1);
-        });
+        addGalleryClick(thumb, i + 1);
       });
 
       // Controls
