@@ -1842,7 +1842,7 @@
           <!-- "Your next bid" overlaps the bottom border of bid-info-box -->
           <div class="bid-helper-row">
             <div class="bid-helper-line"></div>
-            <span class="bid-helper-text">Your next bid</span>
+            <span class="bid-helper-text" id="bid-helper-text">Your next bid</span>
             <div class="bid-helper-line"></div>
           </div>
         </div>
@@ -1860,7 +1860,7 @@
 
         <!-- Place Bid -->
         <div class="place-bid-wrap">
-          <button class="btn-place-bid">Place bid</button>
+          <button class="btn-place-bid" id="btn-place-bid">Place bid</button>
           <div class="going-fast">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></svg>
             <span>Going fast! <strong>3 bids in last 5 mins</strong></span>
@@ -1993,8 +1993,23 @@
     }
 
     // ── Auto bid toggle ──
+    var autoBidOn = false;
     function toggleSwitch() {
-      document.getElementById('auto-bid-switch').classList.toggle('on');
+      autoBidOn = !autoBidOn;
+      document.getElementById('auto-bid-switch').classList.toggle('on', autoBidOn);
+      var helperText = document.getElementById('bid-helper-text');
+      var bidBtn = document.getElementById('btn-place-bid');
+      if (autoBidOn) {
+        helperText.textContent = 'Your auto bid limit';
+        bidBtn.textContent = 'Set auto bid';
+        bidBtn.style.background = '#0fbffb';
+        bidBtn.style.color = '#04141d';
+      } else {
+        helperText.textContent = 'Your next bid';
+        bidBtn.textContent = 'Place bid';
+        bidBtn.style.background = '';
+        bidBtn.style.color = '';
+      }
     }
 
     // ── Countdown timer ──
